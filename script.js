@@ -18,14 +18,19 @@ let checkCount = 0;
 
 handleSlider();
 
+setIndicator("#ccc")
 //set password length ui pr reflect karega bs
 function handleSlider() {
-  inputSlider.value = passwordLength;
-  lengthDisplay.innerText = passwordLength;
+    inputSlider.value = passwordLength;
+    lengthDisplay.innerText = passwordLength;
+    const min = inputSlider.min;
+    const max = inputSlider.max;
+    inputSlider.style.backgroundSize = ( (passwordLength - min)*100/(max - min)) + "% 100%"
 }
 
 function setIndicator(color) {
   indicator.style.backgroundColor = color;
+  indicator.style.boxShadow = `0px 0px 12px 1px ${color}`;
 }
 
 function getRndInteger(min, max) {
