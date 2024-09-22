@@ -71,3 +71,25 @@ function calcStrength() {
       setIndicator("#f00");
     }
 }
+
+async function copyContent(){
+    try{
+       await navigator.clipboard.writeText(passwordDisplay.value);
+       copyMsg.innerText ="copied";
+    }
+    catch(e){
+        copyMsg.innerText="failed";
+    }
+
+    copyMsg.classList.add("active");
+    setTimeout(() =>copyMsg.classList.remove("active"),2000);
+}
+
+inputSlider.addEventListener('input' , (e) =>{
+    passwordLength=e.target.value;
+    handleSlider();
+})
+
+copyBtn.addEventListener('click' , () =>{
+    if(passwordDisplay.value)copyContent() ;
+})
